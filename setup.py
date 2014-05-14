@@ -30,6 +30,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'imio.document.amqp',
     ],
     entry_points="""
     # -*- Entry points: -*-
