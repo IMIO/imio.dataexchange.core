@@ -16,7 +16,8 @@ class Document(object):
              'date',
              'update_date',
              'user',
-             'filepath')
+             'filepath',
+             'file_metadata')
 
     def __init__(self, **kwargs):
         for k, v in kwargs.items():
