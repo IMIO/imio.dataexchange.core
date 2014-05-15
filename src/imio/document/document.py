@@ -22,3 +22,8 @@ class Document(object):
     def __init__(self, **kwargs):
         for k, v in kwargs.items():
             setattr(self, k, v)
+
+    @property
+    def routing_key(self):
+        """Return the routing key of the message"""
+        return self.file_metadata.get('client_id')
