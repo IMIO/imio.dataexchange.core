@@ -1,0 +1,50 @@
+# encoding: utf-8
+
+from ConfigParser import ConfigParser
+from imio.document import Invoice
+from imio.document.amqp import BaseConsumer
+from imio.document.amqp import BasePublisher
+from imio.document.amqp import BaseDispatcher
+import argparse
+
+
+class InvoiceConsumer(BaseConsumer):
+    queue = 'ged.document'
+    routing_key = 'FACT'
+
+    def treat_message(self, message):
+        self.publisher.publish(message)
+
+
+class InvoicePublisher(BasePublisher):
+
+    def get_routing_key(self, message):
+        return message.routing_key
+
+    def transform_message(self, message):
+        return Invoice(message)
+
+
+class InvoiceDispatcher(BaseDispatcher):
+    logger_name = 'document_dispatcher'
+    log_file = 'doc_dispatcher.log'
+
+
+def main():
+    parser = argparse.ArgumentParser(description=u"Initialize the database")
+    parser.add_argument('config_uri', type=str)
+
+    args = parser.parse_args()
+    config = ConfigParser()
+    config.read(args.config_uri)
+
+    url = config.get('config', 'rabbitmq.url')
+    dispatcher = InvoiceDispatcher(InvoiceConsumer, InvoicePublisher,
+                                   '{0}/%2F?connection_attempts=3&'
+                                   'heartbeat_interval=3600'.format(url))
+    dispatcher.publisher.setup_queue('ged.document.invoice', 'AA')
+    dispatcher.publisher.setup_queue('ged.document.invoice', 'BB')
+    try:
+        dispatcher.start()
+    except KeyboardInterrupt:
+        dispatcher.stop()

@@ -33,6 +33,7 @@ setup(
         'imio.document.amqp',
     ],
     entry_points="""
-    # -*- Entry points: -*-
+    [console_scripts]
+    invoice_dispatcher = imio.document.scripts.invoicedispatcher:main
     """,
 )
