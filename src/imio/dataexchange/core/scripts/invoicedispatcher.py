@@ -42,8 +42,8 @@ def main():
     dispatcher = InvoiceDispatcher(InvoiceConsumer, InvoicePublisher,
                                    '{0}/%2F?connection_attempts=3&'
                                    'heartbeat_interval=3600'.format(url))
-    dispatcher.publisher.setup_queue('dms.document.invoice', 'AA')
-    dispatcher.publisher.setup_queue('dms.document.invoice', 'BB')
+    dispatcher.publisher.setup_queue('dms.invoice.AA', 'AA')
+    dispatcher.publisher.setup_queue('dms.invoice.BB', 'BB')
     try:
         dispatcher.start()
     except KeyboardInterrupt:
