@@ -1,10 +1,10 @@
 # encoding: utf-8
 
 from ConfigParser import ConfigParser
+from imio.amqp import BaseConsumer
+from imio.amqp import BasePublisher
+from imio.amqp import BaseDispatcher
 from imio.dataexchange.core.invoice import Invoice
-from imio.document.amqp import BaseConsumer
-from imio.document.amqp import BasePublisher
-from imio.document.amqp import BaseDispatcher
 import argparse
 
 
