@@ -9,7 +9,7 @@ import argparse
 
 
 class InvoiceConsumer(BaseConsumer):
-    queue = 'ged.document'
+    queue = 'dms.document'
     routing_key = 'FACT'
 
     def treat_message(self, message):
@@ -42,8 +42,8 @@ def main():
     dispatcher = InvoiceDispatcher(InvoiceConsumer, InvoicePublisher,
                                    '{0}/%2F?connection_attempts=3&'
                                    'heartbeat_interval=3600'.format(url))
-    dispatcher.publisher.setup_queue('ged.document.invoice', 'AA')
-    dispatcher.publisher.setup_queue('ged.document.invoice', 'BB')
+    dispatcher.publisher.setup_queue('dms.document.invoice', 'AA')
+    dispatcher.publisher.setup_queue('dms.document.invoice', 'BB')
     try:
         dispatcher.start()
     except KeyboardInterrupt:
