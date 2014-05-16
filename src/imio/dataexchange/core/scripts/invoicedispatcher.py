@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 from ConfigParser import ConfigParser
-from imio.document import Invoice
+from imio.dataexchange.core.invoice import Invoice
 from imio.document.amqp import BaseConsumer
 from imio.document.amqp import BasePublisher
 from imio.document.amqp import BaseDispatcher
