@@ -9,7 +9,7 @@ import argparse
 
 
 class InvoiceConsumer(BaseConsumer):
-    queue = 'dms.document'
+    queue = 'dms.invoice'
     routing_key = 'FACT'
 
     def treat_message(self, message):
