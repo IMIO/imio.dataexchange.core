@@ -45,7 +45,11 @@ def init_dispatcher(
                                 '{0}/%2F?connection_attempts=3&'
                                 'heartbeat_interval=3600'.format(amqp_url))
 
-    for client_id in get_client_ids(file_type):
+    client_ids = get_client_ids(file_type)
+    if not client_ids:
+        raise ValueError(
+            'There is no queue to publish for type ({0})'.format(file_type))
+    for client_id in client_ids:
         queue_name = '{0}.{1}'.format(consumer_cls.queue, client_id)
         dispatcher.publisher.setup_queue(queue_name, client_id)
     try:
