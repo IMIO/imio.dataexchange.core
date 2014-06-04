@@ -1,8 +1,8 @@
 # encoding: utf-8
 
 
-class Invoice(object):
-    """A DMS Invoice"""
+class IncomingMail(object):
+    """A DMS Incoming Mail"""
 
     def __init__(self, document):
         self._doc = document

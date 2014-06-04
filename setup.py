@@ -36,5 +36,6 @@ setup(
     entry_points="""
     [console_scripts]
     invoice_dispatcher = imio.dataexchange.core.scripts.invoicedispatcher:main
+    incomingmail_dispatcher = imio.dataexchange.core.scripts.incomingmaildispatcher:main
     """,
 )
