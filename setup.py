@@ -31,6 +31,7 @@ setup(
     install_requires=[
         'setuptools',
         'imio.amqp',
+        'imio.dataexchange.db',
     ],
     entry_points="""
     [console_scripts]

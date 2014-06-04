@@ -5,6 +5,12 @@ from imio.amqp import BaseConsumer
 from imio.amqp import BasePublisher
 from imio.amqp import BaseDispatcher
 from imio.dataexchange.core.invoice import Invoice
+from imio.dataexchange.db import DBSession
+from imio.dataexchange.db import DeclarativeBase
+from imio.dataexchange.db.mappers.file import File
+from sqlalchemy import distinct
+from sqlalchemy import engine_from_config
+
 import argparse
 
 
@@ -38,13 +44,33 @@ def main():
     config = ConfigParser()
     config.read(args.config_uri)
 
-    url = config.get('config', 'rabbitmq.url')
+    init_database(config._sections.get('config'))
+    init_amqp(config.get('config', 'rabbitmq.url'))
+
+
+def init_database(config):
+    engine = engine_from_config(config, prefix='sqlalchemy.')
+    # Remove the transaction manager
+    del DBSession.session_factory.kw['extension']
+    DBSession.configure(bind=engine)
+    DeclarativeBase.metadata.bind = engine
+
+
+def init_amqp(amqp_url):
     dispatcher = InvoiceDispatcher(InvoiceConsumer, InvoicePublisher,
                                    '{0}/%2F?connection_attempts=3&'
-                                   'heartbeat_interval=3600'.format(url))
-    dispatcher.publisher.setup_queue('dms.invoice.AA', 'AA')
-    dispatcher.publisher.setup_queue('dms.invoice.BB', 'BB')
+                                   'heartbeat_interval=3600'.format(amqp_url))
+
+    for client_id in get_client_ids('FACT'):
+        dispatcher.publisher.setup_queue('dms.invoice.{0}'.format(client_id),
+                                         client_id)
     try:
         dispatcher.start()
     except KeyboardInterrupt:
         dispatcher.stop()
+
+
+def get_client_ids(file_type):
+    query = DBSession.query(distinct(File.client_id))
+    query = query.filter(File.type == file_type)
+    return [l[0] for l in query.all()]
