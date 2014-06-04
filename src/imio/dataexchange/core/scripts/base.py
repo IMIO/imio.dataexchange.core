@@ -18,7 +18,7 @@ def init_script():
     config = ConfigParser()
     config.read(args.config_uri)
 
-    init_database(config._sections.get('config'))
+    init_database(config._sections.get('app:main'))
 
     return config
 
@@ -40,7 +40,7 @@ def get_client_ids(file_type):
 def init_dispatcher(
     config, dispatcher_cls, consumer_cls, publisher_cls, file_type,
 ):
-    amqp_url = config.get('config', 'rabbitmq.url')
+    amqp_url = config.get('app:main', 'rabbitmq.url')
     dispatcher = dispatcher_cls(consumer_cls, publisher_cls,
                                 '{0}/%2F?connection_attempts=3&'
                                 'heartbeat_interval=3600'.format(amqp_url))
