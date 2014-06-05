@@ -3,7 +3,7 @@
 from imio.amqp import BaseConsumer
 from imio.amqp import BasePublisher
 from imio.amqp import BaseDispatcher
-from imio.dataexchange.core.outgoingmail import OutgoingMail
+from imio.dataexchange.core.dms import OutgoingMail
 from imio.dataexchange.core.scripts.base import init_dispatcher
 from imio.dataexchange.core.scripts.base import init_script
 
