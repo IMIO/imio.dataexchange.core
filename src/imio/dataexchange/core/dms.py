@@ -38,13 +38,25 @@ class DMSFile(object):
                                 self._doc.file_metadata.get('scan_hour'))
         return datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
 
+    @property
+    def mail_type(self):
+        return None
+
 
 class Invoice(DMSFile):
     """A DMS Invoice"""
 
+    @property
+    def mail_type(self):
+        return 'facture'
+
 
 class IncomingMail(DMSFile):
     """A DMS Incoming Mail"""
+
+    @property
+    def mail_type(self):
+        return 'courrier'
 
 
 class OutgoingMail(DMSFile):
