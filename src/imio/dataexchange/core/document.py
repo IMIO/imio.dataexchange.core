@@ -12,6 +12,8 @@ def create_document(source):
 class Document(object):
     """A GED Document"""
     attrs = ('external_id',
+             'client_id',
+             'type',
              'version',
              'date',
              'update_date',
