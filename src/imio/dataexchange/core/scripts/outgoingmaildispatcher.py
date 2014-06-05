@@ -17,6 +17,7 @@ class OutgoingMailConsumer(BaseConsumer):
 
 
 class OutgoingMailPublisher(BasePublisher):
+    exchange = 'dms.outgoingmail'
 
     def get_routing_key(self, message):
         return message.routing_key

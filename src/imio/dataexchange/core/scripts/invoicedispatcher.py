@@ -17,6 +17,7 @@ class InvoiceConsumer(BaseConsumer):
 
 
 class InvoicePublisher(BasePublisher):
+    exchange = 'dms.invoice'
 
     def get_routing_key(self, message):
         return message.routing_key
