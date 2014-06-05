@@ -30,12 +30,17 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
-        'imio.amqp',
-        'imio.dataexchange.db',
     ],
+    extras_require={
+        'script': [
+            'imio.amqp',
+            'imio.dataexchange.db',
+        ],
+    },
     entry_points="""
     [console_scripts]
     invoice_dispatcher = imio.dataexchange.core.scripts.invoicedispatcher:main
     incomingmail_dispatcher = imio.dataexchange.core.scripts.incomingmaildispatcher:main
+    outgoingmail_dispatcher = imio.dataexchange.core.scripts.outgoingmaildispatcher:main
     """,
 )
