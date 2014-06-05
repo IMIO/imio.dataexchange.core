@@ -28,4 +28,4 @@ class Document(object):
     @property
     def routing_key(self):
         """Return the routing key of the message"""
-        return self.file_metadata.get('client_id')
+        return self.client_id
