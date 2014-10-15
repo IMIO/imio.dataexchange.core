@@ -42,7 +42,7 @@ def init_dispatcher(
 ):
     amqp_url = config.get('app:main', 'rabbitmq.url')
     dispatcher = dispatcher_cls(consumer_cls, publisher_cls,
-                                '{0}/%2F?connection_attempts=3&'
+                                '{0}/%2Fwebservice?connection_attempts=3&'
                                 'heartbeat_interval=3600'.format(amqp_url))
 
     client_ids = get_client_ids(file_type)
