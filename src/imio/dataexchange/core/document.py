@@ -18,7 +18,7 @@ class Document(object):
              'date',
              'update_date',
              'user',
-             'filepath',
+             'file_md5',
              'file_metadata')
 
     def __init__(self, **kwargs):
