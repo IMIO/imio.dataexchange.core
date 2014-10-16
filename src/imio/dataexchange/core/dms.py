@@ -21,10 +21,6 @@ class DMSFile(object):
         return self._doc.file_metadata.get('creator')
 
     @property
-    def filepath(self):
-        return self._doc.filepath
-
-    @property
     def external_id(self):
         return self._doc.external_id
 
