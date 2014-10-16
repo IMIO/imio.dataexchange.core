@@ -17,6 +17,10 @@ class DMSFile(object):
         return self._doc.file_metadata.get('filename')
 
     @property
+    def file_md5(self):
+        return self._doc.file_md5
+
+    @property
     def creator(self):
         return self._doc.file_metadata.get('creator')
 
