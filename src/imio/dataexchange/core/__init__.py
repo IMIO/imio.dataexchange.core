@@ -5,6 +5,8 @@ from imio.dataexchange.core.dms import Invoice
 from imio.dataexchange.core.dms import IncomingMail
 from imio.dataexchange.core.dms import OutgoingMail
 from imio.dataexchange.core.document import Document
+from imio.dataexchange.core.request import Request
+from imio.dataexchange.core.request import RequestFile
 
 
 __all__ = (
@@ -13,4 +15,6 @@ __all__ = (
     Invoice.__name__,
     IncomingMail.__name__,
     OutgoingMail.__name__,
+    Request.__name__,
+    RequestFile.__name__,
 )
