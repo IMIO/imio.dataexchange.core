@@ -19,3 +19,10 @@ class RequestFile(object):
     def __init__(self, uid, metadata):
         self.uid = uid
         self.metadata = metadata
+
+
+class Response(object):
+
+    def __init__(self, uid, **parameters):
+        self.uid = uid
+        self.parameters = parameters
