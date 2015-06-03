@@ -4,7 +4,11 @@ Changelog
 0.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add the Response object
+  [mpeeters]
+
+- Add the Request and RequestFile objects
+  [mpeeters]
 
 
 0.1 (2014-10-17)
