@@ -47,14 +47,6 @@ class DMSFile(object):
         return None
 
 
-class Invoice(DMSFile):
-    """A DMS Invoice"""
-
-    @property
-    def mail_type(self):
-        return 'facture'
-
-
 class IncomingMail(DMSFile):
     """A DMS Incoming Mail"""
 
