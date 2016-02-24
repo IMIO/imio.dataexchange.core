@@ -57,3 +57,11 @@ class IncomingMail(DMSFile):
 
 class OutgoingMail(DMSFile):
     """A DMS Outgoing Mail"""
+
+
+class OutgoingGeneratedMail(DMSFile):
+    """A DMS Outgoing Generated Mail"""
+
+
+class Deliberation(DMSFile):
+    """A Deliberation of Plone Meeting"""
