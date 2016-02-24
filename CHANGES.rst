@@ -4,6 +4,12 @@ Changelog
 0.1.1 (unreleased)
 ------------------
 
+- Add dispatchers for deliberations and outgoing generated mails
+  [mpeeters]
+
+- Remove the invoice dispatcher since the document type no longer exist
+  [mpeeters]
+
 - Add the Response object
   [mpeeters]
 
