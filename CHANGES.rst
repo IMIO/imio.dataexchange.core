@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.1.1 (unreleased)
-------------------
+0.2 (2016-04-22)
+----------------
 
 - Add dispatchers for deliberations and outgoing generated mails
   [mpeeters]
