@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2.1 (unreleased)
+0.2.1 (2018-11-29)
 ------------------
 
 - Handle missing client for publishers and add a reconnect feature
