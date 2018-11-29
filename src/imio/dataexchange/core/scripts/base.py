@@ -8,6 +8,7 @@ from sqlalchemy import distinct
 from sqlalchemy import engine_from_config
 
 import argparse
+import time
 
 
 def init_script():
@@ -44,11 +45,16 @@ def init_dispatcher(
     dispatcher = dispatcher_cls(consumer_cls, publisher_cls,
                                 '{0}/%2Fwebservice?connection_attempts=3&'
                                 'heartbeat_interval=3600'.format(amqp_url))
-
     client_ids = get_client_ids(file_type)
-    if not client_ids:
-        raise ValueError(
-            'There is no queue to publish for type ({0})'.format(file_type))
+    wait = 0
+    while not client_ids:
+        wait += 1
+        sleep_duration = wait * 60
+        if sleep_duration > 360:
+            sleep_duration = 360
+        print 'There is no message to publish for type ({0})'.format(file_type)
+        time.sleep(sleep_duration)
+        client_ids = get_client_ids(file_type)
     for client_id in client_ids:
         queue_name = '{0}.{1}'.format(consumer_cls.queue, client_id)
         dispatcher.publisher.setup_queue(queue_name, client_id)
