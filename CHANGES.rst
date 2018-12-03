@@ -4,7 +4,8 @@ Changelog
 0.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add the path to the request message
+  [mpeeters]
 
 
 0.2.1 (2018-11-29)

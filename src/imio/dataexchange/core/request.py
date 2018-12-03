@@ -3,8 +3,9 @@
 
 class Request(object):
 
-    def __init__(self, type, parameters, application_id, client_id, uid):
+    def __init__(self, type, path, parameters, application_id, client_id, uid):
         self.type = type
+        self.path = path
         self.parameters = parameters
         self.application_id = application_id
         self.client_id = client_id
