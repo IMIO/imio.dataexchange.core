@@ -11,6 +11,7 @@ class Request(object):
         self.client_id = client_id
         self.uid = uid
         self.files = []
+        self.error_count = 0
 
     def add_file(self, file):
         self.files.append(file)
