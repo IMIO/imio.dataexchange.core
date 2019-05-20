@@ -43,5 +43,6 @@ setup(
     outgoingmail_dispatcher = imio.dataexchange.core.scripts.outgoingmaildispatcher:main
     outgoinggeneratedmail_dispatcher = imio.dataexchange.core.scripts.outgoinggeneratedmaildispatcher:main
     deliberation_dispatcher = imio.dataexchange.core.scripts.deliberationdispatcher:main
+    email_dispatcher = imio.dataexchange.core.scripts.emaildispatcher:main
     """,
 )

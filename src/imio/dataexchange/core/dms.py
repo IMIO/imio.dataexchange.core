@@ -65,3 +65,7 @@ class OutgoingGeneratedMail(DMSFile):
 
 class Deliberation(DMSFile):
     """A Deliberation of Plone Meeting"""
+
+
+class Email(DMSFile):
+    """ A DMS Email """

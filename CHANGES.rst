@@ -4,7 +4,8 @@ Changelog
 0.3.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Implement `Email` dispatcher
+  [mpeeters]
 
 
 0.3.1 (2018-12-05)
