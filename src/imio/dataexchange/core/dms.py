@@ -67,5 +67,5 @@ class Deliberation(DMSFile):
     """A Deliberation of Plone Meeting"""
 
 
-class Email(DMSFile):
-    """ A DMS Email """
+class IncomingEmail(DMSFile):
+    """ A DMS Incoming Email """
