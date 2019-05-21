@@ -10,7 +10,7 @@ from imio.dataexchange.core.scripts.base import init_script
 
 class IncomingEmailConsumer(BaseConsumer):
     queue = 'dms.incoming.email'
-    routing_key = 'EMAIL'
+    routing_key = 'EMAIL_E'
 
     def treat_message(self, message):
         self.publisher.publish(message)
