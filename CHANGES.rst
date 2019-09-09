@@ -4,6 +4,9 @@ Changelog
 0.3.2 (unreleased)
 ------------------
 
+- Add the cache duration parameter to request messages
+  [mpeeters]
+
 - Implement `Email` dispatcher
   [mpeeters]
 
