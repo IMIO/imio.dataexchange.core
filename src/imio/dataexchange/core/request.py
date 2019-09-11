@@ -3,7 +3,15 @@
 
 class Request(object):
     def __init__(
-        self, type, path, parameters, application_id, client_id, uid, cache_duration
+        self,
+        type,
+        path,
+        parameters,
+        application_id,
+        client_id,
+        uid,
+        cache_duration=None,
+        ignore_cache=False,
     ):
         self.type = type
         self.path = path
@@ -12,6 +20,7 @@ class Request(object):
         self.client_id = client_id
         self.uid = uid
         self._cache_duration = cache_duration
+        self._ignore_cache = ignore_cache
         self.files = []
         self.error_count = 0
 
@@ -20,9 +29,14 @@ class Request(object):
 
     @property
     def cache_duration(self):
-        if not hasattr(self, '_cache_duration'):
+        duration = getattr(self, "_cache_duration", None)
+        if not duration:
             return 300
-        return self._cache_duration
+        return duration
+
+    @property
+    def ignore_cache(self):
+        return getattr(self, "_ignore_cache", False)
 
 
 class RequestFile(object):
