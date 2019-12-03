@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.4.1 (unreleased)
+0.5.0 (2019-12-03)
 ------------------
 
 - Make the dispatcher resilient to RabbitMQ restart
