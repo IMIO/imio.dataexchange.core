@@ -28,7 +28,7 @@ class DeliberationPublisher(BasePublisher):
 
 class DeliberationDispatcher(BaseDispatcher):
     logger_name = 'deliberation_dispatcher'
-    log_file = 'deliberation_dispatcher.log'
+    log_file = None
 
 
 def main():

@@ -28,7 +28,7 @@ class OutgoingMailPublisher(BasePublisher):
 
 class OutgoingMailDispatcher(BaseDispatcher):
     logger_name = 'outgoingmail_dispatcher'
-    log_file = 'outgoingmail_dispatcher.log'
+    log_file = None
 
 
 def main():
