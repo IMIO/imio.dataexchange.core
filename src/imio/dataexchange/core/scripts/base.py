@@ -13,21 +13,21 @@ import time
 
 def init_script():
     parser = argparse.ArgumentParser(description=u"Initialize the database")
-    parser.add_argument('config_uri', type=str)
+    parser.add_argument("config_uri", type=str)
 
     args = parser.parse_args()
     config = ConfigParser()
     config.read(args.config_uri)
 
-    init_database(config._sections.get('app:main'))
+    init_database(config._sections.get("app:main"))
 
     return config
 
 
 def init_database(config):
-    engine = engine_from_config(config, prefix='sqlalchemy.')
+    engine = engine_from_config(config, prefix="sqlalchemy.")
     # Remove the transaction manager
-    del DBSession.session_factory.kw['extension']
+    del DBSession.session_factory.kw["extension"]
     DBSession.configure(bind=engine)
     DeclarativeBase.metadata.bind = engine
 
