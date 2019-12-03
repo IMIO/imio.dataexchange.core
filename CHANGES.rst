@@ -4,7 +4,11 @@ Changelog
 0.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Make the dispatcher resilient to RabbitMQ restart
+  [mpeeters]
+
+- Improve logging for docker containers
+  [mpeeters]
 
 
 0.4.0 (2019-09-11)
