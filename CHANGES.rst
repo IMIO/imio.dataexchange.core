@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.5.1 (unreleased)
+0.6.0 (2020-06-22)
 ------------------
 
 - Implement basic auth for requests
