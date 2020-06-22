@@ -12,6 +12,7 @@ class Request(object):
         uid,
         cache_duration=None,
         ignore_cache=False,
+        auth=None,
     ):
         self.type = type
         self.path = path
@@ -21,6 +22,7 @@ class Request(object):
         self.uid = uid
         self._cache_duration = cache_duration
         self._ignore_cache = ignore_cache
+        self.auth = auth
         self.files = []
         self.error_count = 0
 

@@ -4,7 +4,8 @@ Changelog
 0.5.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Implement basic auth for requests
+  [mpeeters]
 
 
 0.5.0 (2019-12-03)
