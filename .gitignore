@@ -9,6 +9,7 @@
 bin/
 devel/
 develop-eggs/
+dist/
 parts/
 var/
 buildout-cache/
