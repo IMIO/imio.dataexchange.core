@@ -50,10 +50,6 @@ class DMSFile(object):
 class IncomingMail(DMSFile):
     """A DMS Incoming Mail"""
 
-    @property
-    def mail_type(self):
-        return 'courrier'
-
 
 class OutgoingMail(DMSFile):
     """A DMS Outgoing Mail"""

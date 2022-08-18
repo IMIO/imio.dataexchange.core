@@ -4,8 +4,8 @@ Changelog
 0.6.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Do not set anymore IncomingMail mail_type
+  [sgeulette]
 
 0.6.0 (2020-06-22)
 ------------------
