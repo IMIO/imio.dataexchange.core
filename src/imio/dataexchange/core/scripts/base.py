@@ -1,6 +1,9 @@
 # encoding: utf-8
+try:
+    from ConfigParser import ConfigParser
+except ImportError:
+    from configparser import ConfigParser
 
-from ConfigParser import ConfigParser
 from imio.dataexchange.db import DBSession
 from imio.dataexchange.db import DeclarativeBase
 from imio.dataexchange.db.mappers.file import File
