@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.6.2 (unreleased)
+0.7.0 (2026-10-23)
 ------------------
 
 - Added Python 3 support, keeping Python 2 compatibility.
