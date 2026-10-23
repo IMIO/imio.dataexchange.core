@@ -1,8 +1,6 @@
 # encoding: utf-8
 
-from ConfigParser import ConfigParser
 from imio.dataexchange.db import DBSession
-from imio.dataexchange.db import DeclarativeBase
 from imio.dataexchange.db.mappers.file import File
 from pika.exceptions import AMQPConnectionError
 from sqlalchemy import distinct
@@ -10,6 +8,12 @@ from sqlalchemy import engine_from_config
 
 import argparse
 import time
+
+
+try:
+    from configparser import ConfigParser
+except ImportError:  # Python 2 (server.dmsmail)
+    from ConfigParser import ConfigParser
 
 
 def init_script():
@@ -27,10 +31,9 @@ def init_script():
 
 def init_database(config):
     engine = engine_from_config(config, prefix="sqlalchemy.")
-    # Remove the transaction manager
-    del DBSession.session_factory.kw["extension"]
+    # Remove the transaction manager, only imio.dataexchange.db < 0.5 sets it here
+    DBSession.session_factory.kw.pop("extension", None)
     DBSession.configure(bind=engine)
-    DeclarativeBase.metadata.bind = engine
 
 
 def get_client_ids(file_type):
@@ -40,7 +43,7 @@ def get_client_ids(file_type):
 
 
 def generate_dispatcher(dispatcher_cls, consumer_cls, publisher_cls, url):
-    params = "connection_attempts=3&heartbeat_interval=3600"
+    params = "connection_attempts=3&heartbeat=3600"
     dispatcher = dispatcher_cls(
         consumer_cls, publisher_cls, "{0}/%2Fwebservice?{1}".format(url, params)
     )

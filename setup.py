@@ -1,4 +1,8 @@
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from setuptools import setup
+
+import sys
+
 
 version = '0.6.2.dev0'
 
@@ -29,7 +33,11 @@ setup(
     license='GPL',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    namespace_packages=['imio', 'imio.dataexchange'],
+    # Python 3: the namespace __init__.py extends __path__ itself, a -nspkg.pth
+    # would hide the PEP 420 portions of imio.amqp and imio.dataexchange.db
+    namespace_packages=(
+        ['imio', 'imio.dataexchange'] if sys.version_info[0] == 2 else []
+    ),
     include_package_data=True,
     zip_safe=False,
     install_requires=[
