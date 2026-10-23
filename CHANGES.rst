@@ -4,7 +4,8 @@ Changelog
 0.6.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added Python 3 support, keeping Python 2 compatibility.
+  [chris-adam]
 
 
 0.6.1 (2022-09-16)
